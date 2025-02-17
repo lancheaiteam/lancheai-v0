@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background-color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.bg-gradient{
+  background: #212121;
+}
+
+.gradient{
+  background: linear-gradient(to right, #eb4143, #c0a3a3);
+  background-size: 200% 100%;
+  -webkit-text-fill-color: transparent; 
+  -webkit-background-clip: text; 
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
