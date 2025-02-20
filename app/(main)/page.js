@@ -4,11 +4,11 @@ import Link from "next/link";
 import lanchbot from "../assets/lanchbot.png";
 import AnimatedRobot from "../components/animatedRobot";
 import AnimatedCoin from "../components/animatedCoin";
-import JoinWaitlistModal from "../components/joinWaitlistModal"; // Import the modal component
+import JoinWaitlistModal from "../components/joinWaitlistModal"; 
 import { FaBell, FaRobot, FaWallet, FaChartLine, FaSearch, FaLink } from "react-icons/fa";
 
 export default function Home() {
-    const [modalOpen, setModalOpen] = useState(false); // Modal state
+    const [modalOpen, setModalOpen] = useState(false);
 
     return (
         <>
@@ -30,15 +30,15 @@ export default function Home() {
                             <div className="flex items-center justify-center gap-4">
                                 <button
                                     className="text-sm mt-12 mb-2 px-4 md:px-10 py-4 bg-gradient-to-r from-[#b02b2c] to-[#5c5959] text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-800/20"
-                                    onClick={() => setModalOpen(true)} // Open the modal on click
-                                    >
+                                    onClick={() => setModalOpen(true)}
+                                >
                                     Join the Waitlist
                                 </button>
 
                                 <Link href={"/documentation"}>
                                     <button
                                         className="text-sm mt-12 mb-2 px-4 md:px-10 py-4 bg-transparent border-2 border-[#5c5959] text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-800/20"
-                                        >
+                                    >
                                         Documentation
                                     </button>
                                 </Link>
@@ -72,10 +72,25 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
+
+                    {/* Video Section */}
+                    <div className="my-10 md:my-20 w-full flex flex-col items-center">
+                        <h2 className="text-3xl md:text-4xl text-white font-bold mb-6 text-center">
+                            Watch Our Demo
+                        </h2>
+                        <div className="w-full max-w-4xl aspect-video">
+                            <iframe
+                                className="w-full h-full rounded-lg shadow-lg"
+                                src="https://www.loom.com/embed/7c5d2ff057e14cf98028c7bfa70c48a1"
+                                title="Loom Video"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            {/* Join Waitlist Modal */}
             <JoinWaitlistModal open={modalOpen} handleClose={() => setModalOpen(false)} />
         </>
     );
