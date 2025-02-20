@@ -42,10 +42,8 @@ const DashboardUI = () => {
 
   return (
     <div className="flex flex-col bg-[#222] min-h-screen">
-      {/* Main Content */}
       <main className="flex-1 p-2 sm:p-4">
         <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
-          {/* Welcome Card */}
           <div className="bg-gradient-to-r from-[#b02b2c] to-[#5c5959] rounded-xl shadow-lg text-white overflow-hidden">
             <div className="p-4 sm:p-6">
               <div className="flex items-center gap-2 sm:gap-3">
@@ -56,7 +54,6 @@ const DashboardUI = () => {
             </div>
           </div>
 
-          {/* Suggested Questions */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 order-3 sm:order-2">
             {suggestedQuestions.map((category) => (
               <div key={category.title} className="bg-white rounded-xl shadow-md overflow-hidden">
@@ -81,7 +78,6 @@ const DashboardUI = () => {
             ))}
           </div>
 
-          {/* Search Bar - Moved up for mobile */}
           <form onSubmit={handleSearch} className="relative order-2 sm:order-3">
             <div className="flex gap-2">
               <div className="relative flex-1">

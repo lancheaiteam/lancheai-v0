@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleClickMeta = () => {
     setIsLoadingMeta(true);
-    setIsLoadingCore(false); // Ensures the other button is not loading
+    setIsLoadingCore(false);
     setTimeout(() => {
       router.push('/dashboard');
     }, 500);
@@ -22,7 +22,7 @@ const Login = () => {
 
   const handleClickCore = () => {
     setIsLoadingCore(true);
-    setIsLoadingMeta(false); // Ensures the other button is not loading
+    setIsLoadingMeta(false);
     setTimeout(() => {
       router.push('/dashboard');
     }, 500);
@@ -30,9 +30,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-transparent flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-16">
-      {/* Main Content */}
       <div className="w-full max-w-4xl mx-auto text-center">
-        {/* Header Section */}
         <Link href={'/'}>
           <div className="flex justify-center items-center gap-3 mb-4 sm:mb-6">
             <span className="flex justify-between items-center">
@@ -49,12 +47,10 @@ const Login = () => {
           Get market insights, swap tokens, and stay updated.
         </p>
 
-        {/* Connect Message */}
         <p className="text-lg sm:text-xl text-gray-400 mb-8 sm:mb-10 md:mb-12">
           Connect your wallet to continue
         </p>
 
-        {/* Wallet Buttons */}
         <div className="grid gap-4 sm:gap-4 w-full max-w-xl mx-auto px-4">
           <button 
             onClick={handleClickMeta}
@@ -91,7 +87,6 @@ const Login = () => {
           </button>
         </div>
 
-        {/* Footer */}
         <p className="text-gray-500 mt-8 sm:mt-12 md:mt-16 max-w-lg mx-auto text-xs sm:text-sm px-4">
           By connecting your wallet, you agree to our Terms of Service and Privacy Policy
         </p>
