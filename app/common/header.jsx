@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaTimes, FaTelegramPlane } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
@@ -8,10 +9,12 @@ const Header = () => {
         <header className="w-full bg-transparent">
             <div className="flex justify-between items-center px-4 py-3 sm:px-6 md:px-20 lg:px-44">
                 {/* Logo Section */}
-                <div className="flex items-center">
-                    <Image src={logo} width={100} height={100} alt="Logo" className="h-6 w-8 md:h-8 md:w-14 mr-2" />
-                    <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Lanche_AI</span>
-                </div>
+                <Link href={'/'}>
+                    <div className="flex items-center">
+                        <Image src={logo} width={100} height={100} alt="Logo" className="h-6 w-8 md:h-8 md:w-14 mr-2" />
+                        <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white">Lanche_AI</span>
+                    </div>
+                </Link>
 
                 {/* Icons Section */}
                 <div className="flex items-center gap-3 sm:gap-6 md:gap-8">

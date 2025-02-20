@@ -1,11 +1,9 @@
-import { Poppins } from "next/font/google";
+import { Poppins } from 'next/font/google';
 import "./globals.css";
-import Header from "./common/header";
 
 const poppins = Poppins({
-    weight: ["400", "700"],
-    subsets: ["latin"],
-    variable: "--font-poppins",
+  weight: ['400', '600', '700'],  
+  subsets: ['latin'],
 });
 
 export const metadata = {
@@ -13,13 +11,14 @@ export const metadata = {
     description: "Experience the FUTURE of AI-Powered Crypto Management",
 };
 
-export default function RootLayout({ children }) {
-    return (
-        <html lang="en">
-            <body className={`${poppins.variable} bg-gradient`}>
-                    <Header />
-                    {children}
-            </body>
-        </html>
-    );
+export default function RootLayout({
+  children,
+}) {
+  return (
+    <html lang="en">
+      <body className={poppins.className}>
+        {children}
+      </body>
+    </html>
+  );
 }

@@ -1,9 +1,10 @@
 "use client"
 import React, { useState } from "react";
-import lanchbot from "./assets/lanchbot.png";
-import AnimatedRobot from "./components/animatedRobot";
-import AnimatedCoin from "./components/animatedCoin";
-import JoinWaitlistModal from "./components/joinWaitlistModal"; // Import the modal component
+import Link from "next/link";
+import lanchbot from "../assets/lanchbot.png";
+import AnimatedRobot from "../components/animatedRobot";
+import AnimatedCoin from "../components/animatedCoin";
+import JoinWaitlistModal from "../components/joinWaitlistModal"; // Import the modal component
 import { FaBell, FaRobot, FaWallet, FaChartLine, FaSearch, FaLink } from "react-icons/fa";
 
 export default function Home() {
@@ -26,13 +27,22 @@ export default function Home() {
                             <p className="text-gray-400 text-center lg:text-left mt-12 text-lg md:text-xl leading-relaxed max-w-2xl">
                                 Revolutionize your crypto experience with LancheAI. Access AI-powered market insights, intelligent portfolio tracking, and comprehensive research in one seamless platform.
                             </p>
+                            <div className="flex items-center justify-center gap-4">
+                                <button
+                                    className="text-sm mt-12 mb-2 px-4 md:px-10 py-4 bg-gradient-to-r from-[#b02b2c] to-[#5c5959] text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-800/20"
+                                    onClick={() => setModalOpen(true)} // Open the modal on click
+                                    >
+                                    Join the Waitlist
+                                </button>
 
-                            <button
-                                className="mt-12 mb-2 px-10 py-4 bg-gradient-to-r from-[#b02b2c] to-[#5c5959] text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-800/20"
-                                onClick={() => setModalOpen(true)} // Open the modal on click
-                            >
-                                Join the Waitlist
-                            </button>
+                                <Link href={"/documentation"}>
+                                    <button
+                                        className="text-sm mt-12 mb-2 px-4 md:px-10 py-4 bg-transparent border-2 border-[#5c5959] text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-gray-800/20"
+                                        >
+                                        Documentation
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
                         <AnimatedRobot imageSrc={lanchbot} />
                     </div>
