@@ -3,8 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 import {
   Home,
-  WalletCards,
-  Trophy,
+  MessageSquare,
+  BarChart,
   ClipboardList,
   Settings,
 } from 'lucide-react';
@@ -14,9 +14,9 @@ const BottomNavigation = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { href: '/dashboard/portfolio', icon: WalletCards, label: 'Portfolio' },
-    { href: '/dashboard/points', icon: Trophy, label: 'Leaderboard' },
     { href: '/dashboard', icon: Home, label: 'Home' },
+    { href: '/dashboard/insight', icon: BarChart, label: 'Insight' },
+    { href: '/dashboard/chat', icon: MessageSquare, label: 'Chat' },
     { href: '/dashboard/tasks', icon: ClipboardList, label: 'Tasks' },
     { href: '/dashboard/settings', icon: Settings, label: 'Settings' },
   ];
@@ -29,10 +29,9 @@ const BottomNavigation = () => {
           <Link
             key={href}
             href={href}
-            className={`flex flex-col items-center p-1 rounded-lg transition-colors
-              ${
-                isActive ? 'text-[#b02b2c]' : 'text-gray-400 hover:text-white'
-              }`}
+            className={`flex flex-col items-center p-1 rounded-lg transition-colors ${
+              isActive ? 'text-[#b02b2c]' : 'text-gray-400 hover:text-white'
+            }`}
           >
             <Icon className='w-5 h-5 mb-1' />
             <span className='text-xs'>{label}</span>

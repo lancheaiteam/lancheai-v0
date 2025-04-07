@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   Home,
-  WalletCards,
-  Trophy,
+  MessageSquare,
+  BarChart,
   ClipboardList,
   Settings,
 } from 'lucide-react';
@@ -16,9 +16,9 @@ const SideNavigation = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { href: '/dashboard/portfolio', icon: WalletCards, label: 'Portfolio' },
-    { href: '/dashboard/points', icon: Trophy, label: 'Leaderboard' },
     { href: '/dashboard', icon: Home, label: 'Home' },
+    { href: '/dashboard/insight', icon: BarChart, label: 'Insight' },
+    { href: '/dashboard/chat', icon: MessageSquare, label: 'Chat' },
     { href: '/dashboard/tasks', icon: ClipboardList, label: 'Tasks' },
     { href: '/dashboard/settings', icon: Settings, label: 'Settings' },
   ];
@@ -43,8 +43,8 @@ const SideNavigation = () => {
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
                   ${
                     isActive
-                      ? 'bg-[#b02b2c]/20 text-[#b02b2c]'
-                      : 'text-white hover:bg-gray-800'
+                      ? 'bg-[#b02b2c]/20 text-white'
+                      : 'text-white hover:bg-[#b02b2c]/10'
                   }`}
               >
                 <Icon className='w-5 h-5' />

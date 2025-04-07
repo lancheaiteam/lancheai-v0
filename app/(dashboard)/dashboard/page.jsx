@@ -1,107 +1,107 @@
-'use client'
-import React, { useState } from 'react';
-import { Search, Send, Sparkles } from 'lucide-react';
+import React from 'react';
 
-const DashboardUI = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const suggestedQuestions = [
-    {
-      title: "Investment Advice",
-      questions: [
-        "How should I invest my $100?",
-        "Analyze my portfolio and suggest investments",
-        "What's the best strategy for long-term investing?",
-        "Should I invest in bonds or stocks?"
-      ]
-    },
-    {
-      title: "Portfolio Analysis",
-      questions: [
-        "Show my portfolio, with total balance",
-        "Calculate my investment returns",
-        "What's my asset allocation?",
-        "Show my investment performance chart"
-      ]
-    },
-    {
-      title: "Market Data",
-      questions: [
-        "What's the price of AVAX?",
-        "Show Bitcoin price trend",
-        "Compare ETH vs BTC performance",
-        "List top performing cryptocurrencies"
-      ]
-    }
-  ];
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log('Searching:', searchQuery);
-  };
-
+const CurrencyDisplay = ({ value }) => {
+  const absValue = Math.abs(value);
+  const formatted = `$${absValue.toLocaleString()}`;
   return (
-    <div className="flex flex-col bg-[#222] min-h-screen">
-      <main className="flex-1 p-2 sm:p-4">
-        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
-          <div className="bg-gradient-to-r from-[#b02b2c] to-[#5c5959] rounded-xl shadow-lg text-white overflow-hidden">
-            <div className="p-4 sm:p-6">
-              <div className="flex items-center gap-2 sm:gap-3">
-                <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
-                <h2 className="text-lg sm:text-xl font-semibold">Your Personal Finance Assistant</h2>
-              </div>
-              <p className="mt-2 text-sm sm:text-base">Ask about investments, analyze your portfolio, and track market trends in real-time.</p>
-            </div>
-          </div>
+    <span className={value >= 0 ? 'text-green-400' : 'text-red-400'}>
+      {value >= 0 ? '+' : '-'}
+      {formatted}
+    </span>
+  );
+};
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 order-3 sm:order-2">
-            {suggestedQuestions.map((category) => (
-              <div key={category.title} className="bg-white rounded-xl shadow-md overflow-hidden">
-                <div className="p-3 sm:p-4">
-                  <h3 className="font-semibold text-gray-700 mb-2 sm:mb-3 text-sm sm:text-base">
-                    {category.title}
-                  </h3>
-                  <ul className="space-y-1 sm:space-y-2">
-                    {category.questions.map((question) => (
-                      <li key={question}>
-                        <button 
-                          className="w-full text-left px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors duration-200 ease-in-out"
-                          onClick={() => setSearchQuery(question)}
-                        >
-                          {question}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <form onSubmit={handleSearch} className="relative order-2 sm:order-3">
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
-                <input
-                  type="text"
-                  placeholder="Ask about investments..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 sm:pl-10 pr-4 py-2 sm:py-3 text-sm sm:text-base rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#b02b2c] focus:border-transparent transition-all duration-200 ease-in-out"
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="bg-gradient-to-r from-[#b02b2c] to-[#5c5959] text-white px-3 sm:px-4 py-2 rounded-lg transition-colors duration-200 ease-in-out flex items-center justify-center"
-              >
-                <Send className="h-4 w-4 sm:h-5 sm:w-5" />
-              </button>
-            </div>
-          </form>
-        </div>
-      </main>
+const PortfolioSummary = ({ totalValue, totalDailyChange }) => {
+  return (
+    <div className='text-center'>
+      <div className='text-base text-gray-400'>Total Value</div>
+      <div className='text-3xl font-bold text-white'>
+        ${totalValue.toLocaleString()}
+      </div>
+      <div className='text-sm text-gray-400 mt-2'>Day Change</div>
+      <div className='text-2xl font-bold'>
+        <CurrencyDisplay value={totalDailyChange} />
+      </div>
     </div>
   );
 };
 
-export default DashboardUI;
+const PortfolioTableRow = ({ item }) => {
+  return (
+    <tr className='border-b hover:bg-gray-800'>
+      <td className='py-3 px-4 flex items-center gap-2 text-white'>
+        <span className='font-medium'>{item.token}</span>
+      </td>
+      <td className='py-3 px-4 text-gray-300'>{item.balance}</td>
+      <td className='py-3 px-4 text-right font-medium text-white'>
+        ${item.value.toLocaleString()}
+      </td>
+      <td className='py-3 px-4 text-right font-medium'>
+        <CurrencyDisplay value={item.dailyChange} />
+      </td>
+    </tr>
+  );
+};
+
+const DashboardHome = () => {
+  const portfolioData = [
+    { token: 'AVAX', balance: '10 AVAX', value: 2394.0, dailyChange: 30.0 },
+    { token: 'USDT', balance: '100 USDT', value: 100.0, dailyChange: -5.0 },
+    { token: 'WETH', balance: '0.5 WETH', value: 1363.0, dailyChange: 15.0 },
+  ];
+
+  const totalValue = portfolioData.reduce((sum, item) => sum + item.value, 0);
+  const totalDailyChange = portfolioData.reduce(
+    (sum, item) => sum + item.dailyChange,
+    0
+  );
+
+  return (
+    <div className='w-full max-w-4xl mx-auto shadow-md rounded-lg p-6'>
+      <header className='flex flex-col items-center justify-center pb-4 border-b border-gray-700'>
+        <PortfolioSummary
+          totalValue={totalValue}
+          totalDailyChange={totalDailyChange}
+        />
+      </header>
+      <div className='overflow-x-auto mt-4'>
+        <table className='w-full border-collapse'>
+          <thead>
+            <tr className='border-b bg-gray-700'>
+              <th className='text-left py-3 px-4 font-medium text-white'>
+                Token
+              </th>
+              <th className='text-left py-3 px-4 font-medium text-white'>
+                Balance
+              </th>
+              <th className='text-right py-3 px-4 font-medium text-white'>
+                Value (USD)
+              </th>
+              <th className='text-right py-3 px-4 font-medium text-white'>
+                Day Change (USD)
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {portfolioData.map((item, index) => (
+              <PortfolioTableRow key={item.token} item={item} index={index} />
+            ))}
+            <tr className='font-bold border-b hover:bg-gray-800'>
+              <td className='py-4 px-4 text-white' colSpan='2'>
+                Total Balance
+              </td>
+              <td className='py-4 px-4 text-right text-white'>
+                ${totalValue.toLocaleString()}
+              </td>
+              <td className='py-4 px-4 text-right'>
+                <CurrencyDisplay value={totalDailyChange} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default DashboardHome;
