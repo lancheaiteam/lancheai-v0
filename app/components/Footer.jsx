@@ -1,14 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { BrainCircuit, Mail, MapPin, Phone, Linkedin } from 'lucide-react';
 import {
-  BrainCircuit,
-  Mail,
-  MapPin,
-  Phone,
-  Github,
-  Twitter,
-  Linkedin,
-} from 'lucide-react';
+  FaTimes,
+  FaTelegramPlane,
+  FaLinkedinIn,
+  FaGithub,
+} from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,25 +30,25 @@ const Footer = () => {
             </p>
             <div className='flex gap-4'>
               <a
-                href='#'
+                href='https://x.com/LancheAI'
                 className='w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-white/70 hover:text-primary-500 hover:bg-dark-700 transition-colors'
                 aria-label='Twitter'
               >
-                <Twitter size={18} />
+                <FaTimes size={18} />
               </a>
               <a
-                href='#'
+                href='https://t.me/LancheAI'
                 className='w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-white/70 hover:text-primary-500 hover:bg-dark-700 transition-colors'
                 aria-label='LinkedIn'
               >
-                <Linkedin size={18} />
+                <FaTelegramPlane size={18} />
               </a>
               <a
-                href='#'
+                href='https://github.com/lancheaiteam'
                 className='w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-white/70 hover:text-primary-500 hover:bg-dark-700 transition-colors'
                 aria-label='GitHub'
               >
-                <Github size={18} />
+                <FaGithub size={18} />
               </a>
             </div>
           </motion.div>
@@ -127,12 +125,12 @@ const Footer = () => {
                   className='flex items-start gap-3 text-white/70 hover:text-primary-400 transition-colors'
                 >
                   <Phone className='w-5 h-5 mt-0.5' />
-                  <span>+1 (234) 567-8900</span>
+                  <span>+234 915 741 6631</span>
                 </a>
               </li>
               <li className='flex items-start gap-3 text-white/70'>
                 <MapPin className='w-5 h-5 mt-0.5' />
-                <span>123 Innovation Drive, Tech City, CA 94103</span>
+                <span>Nsukka, Enugu State.</span>
               </li>
             </ul>
           </motion.div>
@@ -155,7 +153,7 @@ const Footer = () => {
               />
               <button
                 type='submit'
-                className='w-full px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors'
+                className='w-full px-4 py-3 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors'
               >
                 Subscribe
               </button>

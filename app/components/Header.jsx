@@ -1,7 +1,10 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Menu, X, BrainCircuit } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '../assets/logo.png';
+import Link from 'next/link';
 
 const Header = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,8 +39,13 @@ const Header = ({ scrolled }) => {
             }}
             className='relative'
           >
-            <BrainCircuit className='w-8 h-8 text-primary-500' />
-            <div className='absolute inset-0 bg-primary-500/30 blur-xl -z-10 group-hover:bg-primary-500/50 transition-colors'></div>
+            <Image
+              src={logo}
+              alt='logo'
+              width={100}
+              height={100}
+              className='w-9 h-7'
+            />
           </motion.div>
           <span className='text-xl font-bold'>Lanche AI</span>
         </a>
@@ -64,14 +72,13 @@ const Header = ({ scrolled }) => {
               )}
             </motion.a>
           ))}
-          <motion.a
-            href='#get-started'
+          <motion.div
             className='btn-primary'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Started
-          </motion.a>
+            <Link href={'/login'}>Get Started</Link>
+          </motion.div>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -106,15 +113,14 @@ const Header = ({ scrolled }) => {
                 {item.name}
               </motion.a>
             ))}
-            <motion.a
-              href='#get-started'
+            <motion.div
               className='btn-primary inline-block text-center'
               onClick={() => setMobileMenuOpen(false)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Get Started
-            </motion.a>
+              <Link href={'/login'}>Get Started</Link>
+            </motion.div>
           </nav>
         </motion.div>
       )}
